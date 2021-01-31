@@ -15,18 +15,18 @@ let publications = [], requests = [], workers = [];
 pull.bind("tcp://127.0.0.1:" + port);
 console.log("Cola lista para recibir mensajes por el puerto " + port);
 
-rep.bind("tcp://127.0.0.1:" + portRep);
+rep.bind("tcp://frontend:" + portRep);
 console.log("Cola conectada con el frontend en el puerto " + portRep);
 
-pub.bind("tcp://127.0.0.1:" + portSub);
+pub.bind("tcp://frontend:" + portSub);
 console.log("Publicador conectado en el puerto " + portSub);
 
-req.connect("tcp://127.0.0.1:9003");
+req.connect("tcp://worker:9003");
 console.log("Cola conectada al worker en el puerto 9003");
 
-clientPush.connect("tcp://127.0.0.1:9030");
+clientPush.connect("tcp://frontend:9030");
 
-workerPull.bind("tcp://127.0.0.1:" + portWorker);
+workerPull.bind("tcp://worker:" + portWorker);
 
 workerPull.on('message', (msg) => {
     switch(JSON.parse(msg).id) {

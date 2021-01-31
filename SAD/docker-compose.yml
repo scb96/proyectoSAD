@@ -6,3 +6,31 @@ services:
             dockerfile: frontend.dockerfile
         ports:
             - "9050:9050"
+        depends_on:
+            - worker
+    queue1:
+        build:
+            context: .
+            dockerfile: queue1.dockerfile
+        ports:
+            - "9996:9996"
+    queue2:
+        build:
+            context: .
+            dockerfile: queue2.dockerfile
+        ports:
+            - "9997:9997"
+    queue3:
+        build:
+            context: .
+            dockerfile: queue3.dockerfile
+        ports:
+            - "9998:9998"
+    worker:
+        build:
+            context: .
+            dockerfile: worker.dockerfile
+        ports:
+            - "9003:9003"
+        depends_on:
+            - queue1

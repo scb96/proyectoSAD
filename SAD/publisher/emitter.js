@@ -7,9 +7,9 @@ var msg;
 var res = {};
 var data = [];
 
-push.connect("tcp://127.0.0.1:9996");
-push.connect("tcp://127.0.0.1:9997");
-push.connect("tcp://127.0.0.1:9998");
+push.connect("tcp://queue1:9996");
+// push.connect("tcp://queue2:9997");
+// push.connect("tcp://queue3:9998");
 
 
 //req.connect("tcp://127.0.0.1:9000");

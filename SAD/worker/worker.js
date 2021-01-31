@@ -6,11 +6,11 @@ var user = process.argv[2];
 
 var cli = [];
 
-push.connect("tcp://127.0.0.1:9040");
-push.connect("tcp://127.0.0.1:9041");
-push.connect("tcp://127.0.0.1:9042");
+push.connect("tcp://queue1:9040");
+// push.connect("tcp://127.0.0.1:9041");
+// push.connect("tcp://127.0.0.1:9042");
 
-rep.bind("tcp://127.0.0.1:9003");
+rep.bind("tcp://queue1:9003");
 
 rep.on("message", (m) => {
     switch(JSON.parse(m).id) {

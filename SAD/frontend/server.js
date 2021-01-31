@@ -66,18 +66,18 @@ app.post('/signout/:user', (req, res) => {
     signout(req.params.user);
 });
     
-sub.connect("tcp://127.0.0.1:9005");
+sub.connect("tcp://queue1:9005");
 console.log("Conectado a las colas en el puerto 9005");
-sub.connect("tcp://127.0.0.1:9006");
-console.log("Conectado a las colas en el puerto 9006");
-sub.connect("tcp://127.0.0.1:9007");
-console.log("Conectado a las colas en el puerto 9007");
+// sub.connect("tcp://queue2:9006");
+// console.log("Conectado a las colas en el puerto 9006");
+// sub.connect("tcp://queue3:9007");
+// console.log("Conectado a las colas en el puerto 9007");
 
-req.connect("tcp://127.0.0.1:9010");
-req.connect("tcp://127.0.0.1:9011");
-req.connect("tcp://127.0.0.1:9012");
+req.connect("tcp://queue1:9010");
+// req.connect("tcp://queue2:9011");
+// req.connect("tcp://queue3:9012");
 
-pull.bind("tcp://127.0.0.1:9030");
+pull.bind("tcp://queue1:9030");
 
 pull.on('message', (msg) => {
     console.log(JSON.parse(msg).msg);

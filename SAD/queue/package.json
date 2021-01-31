@@ -1,0 +1,12 @@
+{
+  "name": "sad",
+  "version": "1.0.0",
+  "description": "",
+  "dependencies": {
+    "node-gyp": "^7.1.2",
+    "python": "0.0.4",
+    "python3": "0.0.1",
+    "rebuild": "^0.1.2",
+    "zeromq": "^5.2.0"
+  }
+}
