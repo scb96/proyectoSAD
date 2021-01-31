@@ -1,0 +1,20 @@
+{
+  "name": "frontend",
+  "version": "1.0.0",
+  "description": "Frontend FaaS",
+  "main": "client.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Natalia Alcarria, Samuel Calvo",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "body-parser": "^1.5.1",
+    "express": "^4.7.1",
+    "jade": "^1.11.0",
+    "method-override": "^2.1.2",
+    "socket.io": "^3.1.0",
+    "zeromq": "^5.2.0"
+  }
+}

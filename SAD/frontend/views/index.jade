@@ -1,0 +1,22 @@
+html
+    head
+        title Proyecto SAD
+    body
+        h1 Proyecto SAD
+        
+        form
+            
+            script(src="https://cdn.socket.io/socket.io-1.2.0.js").
+            script(src="http://code.jquery.com/jquery-1.11.1.js").
+            script.
+                    $('form').submit(function() {
+                        //var socket = io();
+                        //socket.emit('login', $('#login').val())
+                        alert($('#login').val())
+                    });
+                    
+            label(for=login) Ingrese su nombre de usuario   
+            input(type="text", id=login, name=login, size=15)
+            br
+            button(type="submit") Enviar
+            

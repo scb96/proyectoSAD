@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Axios consuming API REST Demo</title>
+    </head>
+    <body>
+        <div>
+            <div>
+                <h3>Iniciar sesión</h3><br/>
+                <input type="text" id="user_name" name="user_name" placeholder="Nombre de usuario"/>
+                <button onclick="login()" id="bLogin">Iniciar sesión</button> <button onclick="signout()" id="bOut">Cerrar sesión</button> <br/>
+                <hr/><br/>
+                
+                <h3>Obtener suscripciones actuales</h3><br/>
+                <button onclick="getSubscriptions()" disabled="disabled" id="bGet">Suscripciones Actuales</button><br/>
+                <hr/><br/>
+                
+                <label for="subscription_name"><h3>Dar de alta una suscripción</h3></label><br/>
+                <input type="text" id="subscription_name" name="subscription_name" placeholder="Nombre de la suscripción"/>
+                <button onclick="subscribe()" disabled="disabled" id="bAdd">Nueva suscripción</button><br/>
+                <hr/><br/>
+                
+                <label for="unsubscription_name"><h3>Dar de baja una suscripción</h3></label><br/>
+                <input type="text" id="unsubscription_name" name="unsubscription_name" placeholder="Nombre de la suscripción"/>
+                <button onclick="unsubscribe()" disabled="disabled" id="bDel">Eliminar suscripción</button>
+            </div>
+        </div>
+        
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <script>
+                function getSubscriptions() {
+                    axios.get('http://localhost:9050/subscriptions')
+                        .then(function (response) {
+                            console.log(response);
+                        })
+                        .catch(function (error) {
+                            console.log(error);
+                        })
+                        .then(function () {
+                        });
+                    }
+                    
+                function subscribe(subscription) {
+                    let name = document.getElementById('subscription_name').value;
+                    axios.post('http://localhost:9050/subscribe/' + name, {
+                        data: 'SubscriptionName'
+                        })
+                        .then(function (response) {
+                            console.log(response);
+                        })
+                        .catch(function (error) {
+                            console.log(error);
+                        })
+                        .then(function () {
+                        });
+                }
+                
+                function unsubscribe(subscription) {
+                    let name = document.getElementById('unsubscription_name').value;
+                    axios.post('http://localhost:9050/unsubscribe/' + name, {
+                        data: 'SubscriptionName'
+                        })
+                        .then(function (response) {
+                            console.log(response);
+                        })
+                        .catch(function (error) {
+                            console.log(error);
+                        })
+                        .then(function () {
+                        });
+                }
+                
+                function login(user) {
+                    let userName = document.getElementById('user_name').value;
+                    document.getElementById('bGet').disabled = false;
+                    document.getElementById('bAdd').disabled = false;
+                    document.getElementById('bDel').disabled = false;
+                    document.getElementById('user_name').disabled = true;
+                    document.getElementById('bLogin').disabled = true;
+                    //document.getElementById('bOut').disabled = false;
+
+
+
+                    axios.post('http://localhost:9050/login/' + userName, {
+                        data: 'UserName'
+                        })
+                        .then(function (response) {
+                            console.log(response);
+                        })
+                        .catch(function (error) {
+                            console.log(error);
+                        })
+                        .then(function () {
+                            
+                        });
+                }
+                
+                function signout(user) {
+                    let userName = document.getElementById('user_name').value;
+                    document.getElementById('bGet').disabled = true;
+                    document.getElementById('bAdd').disabled = true;
+                    document.getElementById('bDel').disabled = true;
+                    document.getElementById('user_name').disabled = false;
+                    document.getElementById('bLogin').disabled = false;
+                    document.getElementById('bOut').disabled = true;
+                    document.getElementById('user_name').value = "";
+
+                    
+                     axios.post('http://localhost:9050/signout/' + userName, {
+                        data: 'UserName'
+                        })
+                        .then(function (respxonse) {
+                            console.log(response);
+                        })
+                        .catch(function (error) {
+                            console.log(error);
+                        })
+                        .then(function () {
+                            
+                        });
+                }
+
+
+                
+            </script>
+    </body>
+</html>
